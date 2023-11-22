@@ -51,7 +51,7 @@ $student = new Student($db);
                 <td><?php echo $result['first_name']; ?></td>
                 <td><?php echo $result['middle_name']; ?></td>
                 <td><?php echo $result['last_name']; ?></td>
-                <td><?php echo $result['gender']; ?></td>
+                <td><?php echo ($result['gender'] == 0) ? 'F' : 'M'; ?></td>
                 <td><?php echo $result['birthday']; ?></td>
                 <td><?php echo $result['contact_number']; ?></td>
                 <td><?php echo $result['town_city']; ?></td>
