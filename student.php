@@ -110,7 +110,15 @@ class Student {
 
     public function displayAll(){
         try {
-            $sql = "SELECT * FROM students LIMIT 10"; // Modify the table name to match your database
+            //$sql = "SELECT * FROM students LIMIT 10"; // Modify the table name to match your database
+            $sql = "SELECT s.id, s.student_number, s.first_name, s.last_name, 
+            s.middle_name, s.gender, s.birthday, sd.contact_number,
+            tc.name AS town_city, p.name AS province
+            FROM students AS s
+            inner join student_details as sd on s.id=sd.student_id
+			inner join town_city as tc on sd.town_city=tc.id
+			inner join province as p on sd.province=p.id
+            LIMIT 10"; 
             $stmt = $this->db->getConnection()->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
